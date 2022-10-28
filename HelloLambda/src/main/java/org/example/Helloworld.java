@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 
 public class Helloworld
 {
-    //static Logger logger = LogManager.getLogger(Helloworld.class);
+    static Logger logger = LogManager.getLogger(Helloworld.class);
     public static Connection createConnectionViaUserPwd(
             @NonNull String username, @NonNull String pwd,
             @NonNull String dbEndpoint) {
@@ -34,16 +34,17 @@ public class Helloworld
         return null;
     }
 
-    static {
-        try {
-            Connection con = Helloworld.createConnectionViaUserPwd(
-                    "admin", "12345678", "database-1.czwtygsmv6nd.ap-south-1.rds.amazonaws.com");
-        } catch (Exception e) {
-            logger.info("INIT connection FAILED");
-            logger.error(e.getMessage(), e);
-        }
-    }
+
     public String handler(){
+
+            try {
+                Connection con = Helloworld.createConnectionViaUserPwd(
+                        "admin", "aditya123", "jdbc:mysql://database-1.czwtygsmv6nd.ap-south-1.rds.amazonaws.com:3306");
+            } catch (Exception e) {
+                logger.info("INIT connection FAILED");
+                logger.error(e.getMessage(), e);
+            }
+
 
         return "Hello World";
     }
