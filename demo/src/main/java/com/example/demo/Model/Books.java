@@ -1,18 +1,17 @@
 package com.example.demo.Model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table()
-@Getter
-@Setter
+//@Table(name = "books")
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Data
 public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +27,14 @@ public class Books {
     @Column(name = "book_genres")
     private String bookGenres;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-    @JoinTable(name = "authors", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "author_id") })
-    private Set<Authors> authors = new HashSet<Authors>();
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-    @JoinTable(name = "genres", joinColumns = { @JoinColumn(name = "book_id") },  inverseJoinColumns = {
-            @JoinColumn(name = "genres_id") })
-    private Set<Genres> genres = new HashSet<Genres>();
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+//    @JoinTable(name = "authors", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
+//            @JoinColumn(name = "author_id") })
+//    private Set<Authors> authors = new HashSet<Authors>();
+//
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+//    @JoinTable(name = "genres", joinColumns = { @JoinColumn(name = "book_id") },  inverseJoinColumns = {
+//            @JoinColumn(name = "genres_id") })
+//    private Set<Genres> genres = new HashSet<Genres>();
 
 }
