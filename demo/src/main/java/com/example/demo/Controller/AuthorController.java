@@ -2,7 +2,6 @@ package com.example.demo.Controller;
 
 import com.example.demo.Exceptions.ResourceNotFoundExceptions;
 import com.example.demo.Model.Authors;
-import com.example.demo.Repo.AuthorRepo;
 import com.example.demo.Service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,7 @@ public class AuthorController {
 
     @PutMapping("/update")
     public String updateGenres(@RequestBody Authors authors) throws ResourceNotFoundExceptions {
-        authorService.updateAuthor(authors);
+        authorService.updateAuthor(authors.getAuthorId(), authors);
         return "author updated";
     }
 
